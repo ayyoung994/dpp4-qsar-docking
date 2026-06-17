@@ -1,4 +1,4 @@
-# 02_QSAR_Regression
+# 03_QSAR_Regression
 
 This folder contains the QSAR regression modeling and validation workflows for the curated human DPP-4 inhibitor dataset.
 
@@ -11,7 +11,7 @@ The target variable for regression modeling is pIC50. Molecular structures were 
 ## Folder structure
 
 ```text
-02_QSAR_Regression/
+03_QSAR_Regression/
 ├── README.md
 ├── 01_QSAR_regression_analysis/
 └── 02_Y-randomization/

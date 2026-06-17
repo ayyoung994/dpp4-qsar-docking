@@ -39,7 +39,7 @@ The Y-randomization workflow includes:
 The main input file is the final curated QSAR-ready dataset:
 
 ```text
-07_DPP4_QSAR_dataset_parent_cleaned_locked.csv
+DPP4_QSAR_dataset_parent_cleaned_locked.csv
 ```
 
 This file should contain valid parent SMILES and pIC50 values.

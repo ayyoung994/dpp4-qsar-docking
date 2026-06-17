@@ -25,7 +25,6 @@ Resolution: 2.60 Å
 2rgu_full_chain.pdb
 2RGU_chainA_with_ligand.pdb
 2RGU_chainA_receptor_clean.pdb
-DPP4_2RGU_docking_grid_information.txt
 ```
 
 ## File descriptions
@@ -54,11 +53,6 @@ This file contains the cleaned DPP-4 receptor structure prepared for docking.
 
 The co-crystallized ligand, crystallographic water molecules, and non-essential heteroatoms were removed. This receptor file was used as the main receptor input for docking preparation.
 
-### 5. `DPP4_2RGU_docking_grid_information.txt`
-
-This file contains the docking grid information calculated from the co-crystallized ligand 356 in 2RGU.
-
-The docking grid was centered on the reference ligand to cover the DPP-4 inhibitor-binding pocket.
 
 ## Docking grid center
 

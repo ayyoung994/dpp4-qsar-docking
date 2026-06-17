@@ -8,7 +8,7 @@ This step visualizes the structural distribution of curated DPP-4 inhibitors usi
 
 ## Input
 
-- 07_DPP4_QSAR_dataset_parent_cleaned_locked
+- 07_DPP4_QSAR_dataset_parent_cleaned_locked.csv
 
 ## Main script
 

@@ -5,7 +5,7 @@ This folder contains the Google Colab notebook used for DPP-4 inhibitor chemical
 ## Notebook
 
 ```text
-DPP4_Chemical_Space_ver2.ipynb
+DPP4_Chemical_Space_ver3.ipynb
 ```
 
 This notebook was used to visualize the chemical space of curated human DPP-4 inhibitors using Morgan fingerprints, PCA, and t-SNE. It was also used to inspect the train/test chemical-space distribution and to map the final docking candidates back onto the chemical-space coordinates for figure preparation.

@@ -11,26 +11,12 @@ The ligand files were used for downstream molecular docking with AutoDock Vina t
 ## File list
 
 ```text
-DPP4_selected_docking_candidates.csv
-DPP4_selected_docking_candidates.sdf
 ligand_split_summary.csv
 individual_ligands/
 reference_ligand/
 ```
 
 ## File descriptions
-
-### `DPP4_selected_docking_candidates.csv`
-
-This file contains the final list of compounds selected for docking.
-
-It includes candidate IDs, ChEMBL compound IDs, compound names when available, SMILES, pIC50 values, activity classes, molecular descriptors, and selection groups.
-
-### `DPP4_selected_docking_candidates.sdf`
-
-This file contains the final selected docking candidates as a merged three-dimensional SDF file.
-
-The structures were generated from parent SMILES using RDKit. Explicit hydrogens were added, 3D conformers were generated, and geometry optimization was performed before saving the ligands.
 
 ### `ligand_split_summary.csv`
 

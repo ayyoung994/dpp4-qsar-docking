@@ -1,6 +1,6 @@
 # Colab Script
 
-This directory contains the Google Colab notebook used for the DPP-4 QSAR regression workflow. The notebook builds ligand-based regression models to predict DPP-4 inhibitory potency using curated parent SMILES and median pIC50 values.
+This directory contains the Google Colab notebook used for the DPP-4 QSAR regression analysis.
 
 ## Notebook
 
@@ -8,44 +8,48 @@ This directory contains the Google Colab notebook used for the DPP-4 QSAR regres
 DPP4_QSAR_ver5.ipynb
 ```
 
+This notebook performs ligand-based QSAR regression modeling for curated human DPP-4 inhibitors using Morgan fingerprints and machine-learning regression models.
+
 ## Purpose
 
-The purpose of this notebook is to:
+The notebook was used to build, compare, tune, and evaluate QSAR regression models for predicting DPP-4 inhibitory potency.
+
+The regression target was:
 
 ```text
-1. Load the curated DPP-4 QSAR dataset
-2. Check missing values, duplicated structures, and activity distribution
-3. Convert parent SMILES into RDKit molecule objects
-4. Generate Morgan fingerprints with chirality
-5. Split the dataset into training and independent test sets
-6. Compare baseline regression models
-7. Perform 5-fold cross-validation
-8. Tune selected top-performing models
-9. Select the final model using cross-validation performance
-10. Evaluate the final model on the independent test set
-11. Save model outputs, predictions, metadata, and figures
-```
-
-## Input File
-
-The notebook expects the curated dataset to be available in the working directory:
-
-```text
-DPP4_QSAR_dataset_parent_cleaned_locked.csv
-```
-
-The main columns used are:
-
-```text
-molecule_chembl_id
-parent_smiles
 pIC50_median
-activity_class
+```
+
+The molecular input was:
+
+```text
+parent_smiles
+```
+
+## Workflow Summary
+
+The notebook includes the following major steps:
+
+```text
+Setup. Install and import libraries
+Step 1. Load QSAR dataset
+Step 2. Check missing values and duplicated structures
+Step 3. Convert SMILES to RDKit molecules
+Step 4. Generate Morgan fingerprints
+Step 5. Train/test split
+Step 6. First QSAR regression model comparison
+Step 7. Baseline 5-fold cross-validation
+Step 8. Hyperparameter tuning for top models
+Step 9. Final model selection and reproducibility record
+Step 10. Cross-validated prediction for the final model on the training set
+Step 11. Predicted vs experimental plot for the independent test set
+Step 12. Residual plot for the independent test set
+Final step. Save final test-set predictions and diagnostic figures
 ```
 
 ## Molecular Representation
 
-Molecular structures are represented using Morgan fingerprints generated with RDKit.
+Morgan fingerprints were generated using RDKit with the following settings:
 
 ```text
 Fingerprint type: Morgan fingerprint
@@ -54,15 +58,9 @@ Number of bits: 2048
 Include chirality: True
 ```
 
-The target variable for regression modeling is:
-
-```text
-pIC50_median
-```
-
 ## Model Development
 
-The notebook compares several regression algorithms, including:
+The notebook compared the following regression models:
 
 ```text
 Dummy Regressor
@@ -76,7 +74,7 @@ KNN Regressor
 XGBoost
 ```
 
-Model performance is evaluated using:
+Model performance was evaluated using:
 
 ```text
 R²
@@ -87,13 +85,13 @@ Train-test R² gap
 
 ## Cross-Validation
 
-A 5-fold stratified cross-validation strategy is used on the training set. Because the target variable is continuous, pIC50 values are first divided into quantile-based bins before applying stratified splitting.
+A 5-fold stratified cross-validation strategy was used on the training set. Because the target variable was continuous, `pIC50_median` values were first divided into quantile-based bins before applying stratified cross-validation.
 
-The independent test set is not used during cross-validation or hyperparameter tuning.
+The independent test set was not used during cross-validation or hyperparameter tuning.
 
 ## Hyperparameter Tuning
 
-The top-performing models are tuned using `RandomizedSearchCV`. The tuned models include:
+The top-performing models were tuned using `RandomizedSearchCV`:
 
 ```text
 Random Forest
@@ -101,54 +99,29 @@ HistGradient Boosting
 XGBoost
 ```
 
-The final model is selected based on the highest tuned cross-validation R².
+## Final Model Selection
 
-## Final Model Evaluation
-
-After model selection, the final model is evaluated on the independent test set. The notebook generates:
-
-```text
-Predicted vs experimental pIC50 plot
-Residual plot
-Final test-set prediction table
-Final model metadata
-Saved model object
-```
-
-## Main Output Files
-
-The notebook saves the following key output files:
-
-```text
-DPP4_Morgan_QSAR_model_comparison.csv
-DPP4_Morgan_QSAR_baseline_CV_results.csv
-DPP4_Morgan_QSAR_tuned_model_results.csv
-DPP4_QSAR_final_model_selection_reproducibility.csv
-DPP4_QSAR_final_model_metadata.json
-DPP4_QSAR_final_model.joblib
-DPP4_QSAR_final_test_predictions.csv
-DPP4_QSAR_predicted_vs_residual_testset.png
-```
-
-## Reproducibility Notes
-
-The notebook uses a fixed random seed:
-
-```text
-RANDOM_STATE = 42
-```
-
-The final model-selection rule is:
+The final model was selected based on the following rule:
 
 ```text
 Select the tuned model with the highest cross-validation R².
 ```
 
-The independent test set is used only for final evaluation, not for model selection.
+The independent test set was used only for final model evaluation.
 
-## Required Python Packages
+## Main Outputs
 
-The main packages used in the notebook are:
+The notebook generates model comparison tables, cross-validation results, tuned model results, final model metadata, saved model object, prediction tables, and diagnostic plots.
+
+Detailed output descriptions are provided in:
+
+```text
+../output_files/README.md
+```
+
+## Required Packages
+
+The main Python packages used in this notebook are:
 
 ```text
 pandas
@@ -160,7 +133,12 @@ matplotlib
 joblib
 ```
 
-## Notes
+## Reproducibility
 
-This notebook performs ligand-based QSAR regression using 2D molecular fingerprints. The model should be interpreted as a predictive machine-learning model, not as direct structural validation of DPP-4 binding. Docking and structural interpretation are handled separately in the docking analysis directory.
+A fixed random seed was used:
 
+```text
+RANDOM_STATE = 42
+```
+
+The final model, model-selection table, metadata file, prediction tables, and diagnostic figures were saved to support reproducibility.

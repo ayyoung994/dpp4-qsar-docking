@@ -1,4 +1,4 @@
-# Colab Script: DPP-4 Y-Randomization Test
+# Colab Script
 
 This directory contains the Google Colab notebook used to perform Y-randomization analysis for the final DPP-4 QSAR regression model.
 

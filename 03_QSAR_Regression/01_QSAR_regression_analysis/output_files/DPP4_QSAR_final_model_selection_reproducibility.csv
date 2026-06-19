@@ -1,0 +1,4 @@
+Model,Best_CV_R2,Train_R2,Test_R2,Overfit_Gap,Test_MAE,Test_RMSE,Best_Params,Train_Test_R2_Gap
+Tuned Random Forest,0.6446002282949065,0.9337914962246263,0.6604328849607988,0.27335861126382754,0.5195201645113124,0.7157971120827303,"{'n_estimators': 300, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 0.3, 'max_depth': None}",0.27335861126382754
+Tuned HistGradient Boosting,0.6428545214236125,0.9315402783728034,0.6506459445431039,0.2808943338296995,0.522661434445636,0.726039123775875,"{'min_samples_leaf': 20, 'max_leaf_nodes': 63, 'max_iter': 500, 'learning_rate': 0.03, 'l2_regularization': 0.0}",0.2808943338296995
+Tuned XGBoost,0.6224817812346479,0.9094464308616891,0.6322445777057843,0.27720185315590473,0.5404984338491838,0.7449149181697371,"{'subsample': 0.9, 'reg_lambda': 0.1, 'reg_alpha': 0.0, 'n_estimators': 500, 'max_depth': 6, 'learning_rate': 0.05, 'colsample_bytree': 0.9}",0.27720185315590473

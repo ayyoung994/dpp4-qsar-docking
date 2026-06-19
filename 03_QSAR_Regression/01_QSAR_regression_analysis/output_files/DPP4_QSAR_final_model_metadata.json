@@ -1,0 +1,20 @@
+{
+    "final_model_name": "Tuned Random Forest",
+    "selection_rule": "highest_CV_R2",
+    "fingerprint": "Morgan fingerprint",
+    "radius": 2,
+    "n_bits": 2048,
+    "include_chirality": true,
+    "random_state": 42,
+    "best_cv_r2": 0.6446002282949065,
+    "test_r2": 0.6604328849607988,
+    "test_rmse": 0.7157971120827303,
+    "test_mae": 0.5195201645113124,
+    "best_params": {
+        "n_estimators": 300,
+        "min_samples_split": 5,
+        "min_samples_leaf": 1,
+        "max_features": 0.3,
+        "max_depth": null
+    }
+}

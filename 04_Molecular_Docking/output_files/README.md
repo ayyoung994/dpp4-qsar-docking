@@ -13,8 +13,8 @@ output_files/
 ├── docked_ligands/
 │   └── Docked ligand pose files in SDF format
 │
+├── Docking_score_and_interaction_types.xlsx
 ├── Overall docking results.csv
-│
 └── README.md
 ```
 
@@ -24,9 +24,39 @@ output_files/
 Overall docking results.csv
 ```
 
-This file summarizes the docking results for the selected ligands. It includes the docking score or binding affinity values and relevant docking result information for each compound.
+This file summarizes the overall docking results for the selected ligands. It includes docking score or binding affinity information for the reference ligand and selected compounds.
 
-The table was used to compare the relative docking scores of selected compounds and reference ligands.
+The table was used to compare the relative docking scores of the docked ligands.
+
+## Docking Score and Interaction Type Summary
+
+```text
+Docking_score_and_interaction_types.xlsx
+```
+
+This spreadsheet summarizes the docking scores and key interaction information for each ligand.
+
+The file includes the following information:
+
+```text
+Ligand
+Activity group
+Docking score
+Key residues
+Major interaction types
+```
+
+The ligands summarized in this file include:
+
+```text
+356 reference ligand
+C1–C3 high-activity compounds
+C4–C5 known DPP-4 inhibitors
+C6–C7 moderate-activity compounds
+C8–C9 low-activity compounds
+```
+
+This file was used to connect docking scores with qualitative protein–ligand interaction patterns.
 
 ## Docked Ligand Files
 
@@ -43,7 +73,6 @@ These structures can be opened using molecular visualization tools such as:
 ```text
 PyMOL
 Discovery Studio Visualizer
-ChimeraX
 ```
 
 ## 2D Interaction Diagrams
@@ -63,6 +92,9 @@ Hydrogen bonds
 Hydrophobic contacts
 π–π interactions
 π–cation interactions
+π–anion interactions
+π–sigma interactions
+Halogen interactions
 Electrostatic contacts
 Nearby binding-site residues
 ```
@@ -83,9 +115,10 @@ Y = 29.5164 Å
 Z = 29.7007 Å
 ```
 
+The final PyRx/Vina search-space values above were used for the docking runs. The PyMOL-based grid estimate was used only during preliminary binding-site inspection.
+
 ## Notes
 
 The docking outputs were used for qualitative structural interpretation of selected QSAR compounds. Docking scores and interaction diagrams were used as supportive evidence, not as the primary validation method for QSAR model performance.
 
-Docking results should be interpreted carefully because predicted poses and scores can be affected by receptor preparation, ligand preparation, grid definition, and scoring-function limitations.
-
+Docking results should be interpreted carefully because predicted poses and scores can be affected by receptor preparation, ligand preparation, grid definition, ligand protonation state, and scoring-function limitations.

@@ -14,14 +14,14 @@ output_files/
 │   └── Docked ligand pose files in SDF format
 │
 ├── Docking_score_and_interaction_types.xlsx
-├── Overall docking results.csv
+├── Overall_docking_results.csv
 └── README.md
 ```
 
 ## Overall Docking Result Table
 
 ```text
-Overall docking results.csv
+Overall_docking_results.csv
 ```
 
 This file summarizes the overall docking results for the selected ligands. It includes docking score or binding affinity information for the reference ligand and selected compounds.

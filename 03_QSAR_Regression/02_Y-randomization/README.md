@@ -1,60 +1,101 @@
-# 02_Y-randomization
+# Colab Script: DPP-4 Y-Randomization Test
 
-This folder contains the Y-randomization validation workflow for the DPP-4 QSAR regression model.
+This directory contains the Google Colab notebook used to perform Y-randomization analysis for the final DPP-4 QSAR regression model.
 
-## Purpose
-
-The purpose of this step is to evaluate whether the DPP-4 QSAR regression model learned meaningful structure–activity relationships rather than chance correlations.
-
-Y-randomization was performed by randomly shuffling the pIC50 values while keeping the molecular descriptors unchanged. The model was then rebuilt using the randomized target values. If the original model performs clearly better than the randomized models, this supports the reliability of the QSAR model.
-
-## Folder structure
-
-```text
-02_Y-randomization/
-├── README.md
-├── colab_script/
-├── input_files/
-└── output_files/
-```
-
-## Workflow overview
-
-The Y-randomization workflow includes:
-
-* Loading the final QSAR-ready DPP-4 inhibitor dataset
-* Generating Morgan fingerprints from parent SMILES
-* Using chirality-aware fingerprint generation
-* Reproducing the same train/test split used in QSAR regression
-* Defining the final tuned Random Forest regression model
-* Calculating real model cross-validation performance
-* Randomly shuffling pIC50 values
-* Rebuilding the model with randomized target values
-* Repeating the randomization procedure
-* Comparing real model performance with randomized model performance
-* Exporting summary tables and visualization files
-
-## Input
-
-The main input file is the final curated QSAR-ready dataset:
-
-```text
-DPP4_QSAR_dataset_parent_cleaned_locked.csv
-```
-
-This file should contain valid parent SMILES and pIC50 values.
-
-## Main script
-
-The main notebook for this step is stored in the `colab_script/` folder:
+## Notebook
 
 ```text
 DPP4_Y_Randomization_ver2.ipynb
 ```
 
-## Output
+This notebook evaluates whether the final QSAR model performance is likely to arise from a meaningful relationship between molecular fingerprints and DPP-4 inhibitory activity, rather than from chance correlation.
 
-The output files are stored in the `output_files/` folder:
+## Purpose
+
+The purpose of this notebook is to validate the final QSAR regression model by comparing the real model performance with models trained using randomly shuffled activity values.
+
+The original regression target was:
+
+```text
+pIC50_median
+```
+
+The molecular input was:
+
+```text
+parent_smiles
+```
+
+## Workflow Summary
+
+The notebook includes the following major steps:
+
+```text
+Install and import packages
+Step 1. Load the curated QSAR dataset
+Step 2. Convert SMILES to RDKit molecules
+Step 3. Generate Morgan fingerprints
+Step 4. Reproduce the same train/test split
+Step 5. Define the final tuned Random Forest model
+Step 6. Define the 5-fold cross-validation setting
+Step 7. Calculate real cross-validation performance
+Step 8. Run Y-randomization
+Step 9. Summarize Y-randomization results
+Step 10. Plot Y-randomization results
+Step 11. Save results
+```
+
+## Molecular Representation
+
+Morgan fingerprints were generated using RDKit with the following settings:
+
+```text
+Fingerprint type: Morgan fingerprint
+Radius: 2
+Number of bits: 2048
+Include chirality: True
+```
+
+## Final Model Used
+
+The Y-randomization test was performed using the final tuned QSAR model:
+
+```text
+Tuned Random Forest
+```
+
+The model settings used in this notebook were:
+
+```text
+n_estimators = 300
+min_samples_split = 5
+min_samples_leaf = 1
+max_features = 0.3
+max_depth = None
+random_state = 42
+```
+
+## Cross-Validation Setting
+
+A 5-fold stratified cross-validation strategy was used on the training set. Because the target variable was continuous, `pIC50_median` values were divided into quantile-based bins before applying stratified cross-validation.
+
+The independent test set was not used during the Y-randomization procedure.
+
+## Y-Randomization Procedure
+
+The training-set activity values were randomly shuffled while keeping the molecular fingerprints unchanged. The same model type and cross-validation strategy were then applied to the randomized labels.
+
+The notebook used:
+
+```text
+N_randomizations = 20
+```
+
+The real model CV performance was compared with the distribution of CV performance values from the randomized models.
+
+## Main Output Files
+
+The notebook generates the following output files:
 
 ```text
 DPP4_RF_tuned_Y_randomization_results.csv
@@ -62,49 +103,31 @@ DPP4_RF_tuned_Y_randomization_summary.csv
 DPP4_Y_randomization_plot.png
 ```
 
-## Interpretation
-
-The Y-randomization test supports model reliability when the real QSAR model shows higher predictive performance than models trained with randomized pIC50 values.
-
-If randomized models show performance similar to the real model, this may indicate chance correlation, data leakage, or instability in the modeling workflow.
-
-## Notes
-
-This folder is part of the QSAR regression validation workflow. The Y-randomization results should be interpreted together with the main QSAR regression results, cross-validation performance, test-set performance, and chemical-space analysis.
-
-# Colab Scripts
-
-This folder contains the Google Colab notebook used for Y-randomization validation of the DPP-4 QSAR regression model.
-
-## Notebook
+Detailed output descriptions are provided in:
 
 ```text
-07_DPP4_Y_Randomization_ver2.ipynb
+../output_files/README.md
 ```
 
-This notebook was used to evaluate whether the final DPP-4 QSAR regression model learned meaningful structure–activity relationships rather than chance correlations.
+## Required Packages
 
-## Purpose
+The main Python packages used in the notebook are:
 
-The main purpose of this notebook is to perform Y-randomization testing for the final QSAR regression model.
+```text
+pandas
+numpy
+matplotlib
+rdkit
+scikit-learn
+```
 
-Y-randomization was used as a model validation step by randomly shuffling the pIC50 values and rebuilding the model using the same molecular descriptors, model settings, and cross-validation strategy. If the original model performs substantially better than the randomized models, this supports that the model is learning a real relationship between molecular structure and DPP-4 inhibitory activity.
+## Reproducibility
 
-The workflow includes:
+A fixed random seed was used:
 
-* Loading the final QSAR-ready DPP-4 inhibitor dataset
-* Converting parent SMILES into RDKit molecule objects
-* Generating Morgan fingerprints
-* Applying chirality-aware fingerprint generation
-* Reproducing the same train/test split used in QSAR modeling
-* Defining the final tuned Random Forest regression model
-* Performing 5-fold cross-validation on the real training labels
-* Randomly shuffling the training pIC50 values
-* Rebuilding the model using randomized target values
-* Repeating Y-randomization multiple times
-* Comparing real model performance against randomized models
-* Saving Y-randomization summary tables and figures
+```text
+RANDOM_STATE = 42
+```
 
-## Input dataset
+The same train/test split and cross-validation strategy as the QSAR regression workflow were reproduced to keep the validation procedure consistent.
 
-The notebook uses the final curated QSAR-ready dataset generated from the data curation workflow:

@@ -1,57 +1,65 @@
 # Output Files
 
-This folder contains the output files generated from the DPP-4 Y-randomization validation notebook.
+This directory contains the output files generated from the DPP-4 Y-randomization analysis.
 
-## Purpose
-
-The files in this folder document the Y-randomization validation results for the DPP-4 QSAR regression model.
-
-These outputs were generated to assess whether the final QSAR model learned meaningful structure–activity relationships or whether its performance could be explained by chance correlation.
-
-## Output files list
+## Y-Randomization Results
 
 ```text
 DPP4_RF_tuned_Y_randomization_results.csv
-DPP4_RF_tuned_Y_randomization_summary.csv
-DPP4_Y_randomization_plot.png
 ```
 
-## File descriptions
+Contains the cross-validation results from each Y-randomization run.
 
-### 1. `DPP4_RF_tuned_Y_randomization_results.csv`
+Main information included:
 
-This file contains the performance results from each Y-randomization run.
+```text
+Randomization
+Train_R2_mean
+CV_R2_mean
+CV_R2_std
+CV_MAE_mean
+CV_RMSE_mean
+```
 
-In each run, the pIC50 values were randomly shuffled while the molecular descriptors were kept unchanged. The model was then rebuilt and evaluated using the same validation strategy as the real model.
+Each row represents one randomized-label model. The molecular fingerprints were kept unchanged, while the training-set activity values were shuffled.
 
-This file is used to compare the distribution of randomized model performance against the real model performance.
+## Y-Randomization Summary
 
-### 2. `DPP4_RF_tuned_Y_randomization_summary.csv`
+```text
+DPP4_RF_tuned_Y_randomization_summary.csv
+```
 
-This file summarizes the Y-randomization validation results.
+Contains the summary comparison between the real model and the randomized models.
 
-It includes the real model performance and the overall performance statistics of the randomized models, such as the mean, standard deviation, minimum, and maximum values of the randomized model metrics.
+Main information included:
 
-This summary file is useful for reporting whether the real model performed substantially better than the randomized models.
+```text
+Final_Model
+Real_CV_R2
+Real_CV_MAE
+Real_CV_RMSE
+Randomized_CV_R2_mean
+Randomized_CV_R2_std
+Randomized_CV_R2_max
+Randomized_CV_R2_min
+N_randomizations
+```
 
-### 3. `DPP4_Y_randomization_plot.png`
+This file is used to assess whether the real model performance is clearly higher than the performance obtained after randomizing the activity labels.
 
-This figure visualizes the Y-randomization results.
-
-The plot compares the performance of randomized models with the real QSAR model. A clear separation between the real model and the randomized models supports the reliability of the QSAR regression workflow.
-
-## Main final output
-
-The main final output for interpretation is:
+## Figure Output
 
 ```text
 DPP4_Y_randomization_plot.png
 ```
 
-This figure can be used in the report to visually demonstrate that the real QSAR model outperformed models trained with randomized pIC50 values.
+Scatter plot showing the CV R² values from the Y-randomized models. The real model CV R² is shown as a reference line.
+
+## Interpretation
+
+The Y-randomization test was used as an internal validation step for the final QSAR regression model. If the real model shows substantially higher cross-validation performance than the randomized-label models, this supports that the model learned a meaningful relationship between molecular structure and DPP-4 inhibitory activity rather than random noise.
 
 ## Notes
 
-The CSV files provide numerical evidence, while the PNG figure provides a visual summary of the Y-randomization validation.
+The Y-randomization analysis was performed using the final tuned Random Forest model and the same cross-validation strategy used in the main QSAR regression workflow.
 
-These files should be interpreted together with the main QSAR regression results and cross-validation performance.

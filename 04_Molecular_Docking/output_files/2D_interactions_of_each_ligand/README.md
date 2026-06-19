@@ -1,16 +1,37 @@
 # 2D Interactions of Each Ligand
 
-This folder contains the 2D protein–ligand interaction diagrams generated from the molecular docking analysis of selected DPP-4 ligands.
-
-## Purpose
-
-The purpose of these figures is to summarize the key interactions between each docked ligand and residues in the DPP-4 binding pocket. These diagrams were used to support the interpretation of docking results and structure–activity relationships.
+This folder contains 2D protein–ligand interaction diagrams generated from the molecular docking analysis of selected DPP-4 ligands using the 2RGU receptor structure.
 
 ## Contents
 
-This directory includes 2D interaction figures for individual ligands, including selected high-, moderate-, and low-activity compounds, as well as reference or known DPP-4 inhibitors where applicable.
+The files in this directory are:
 
-Each figure summarizes interactions such as:
+```text
+2RGU_C1.png
+2RGU_C2.png
+2RGU_C3.png
+2RGU_C4.png
+2RGU_C5.png
+2RGU_C6.png
+2RGU_C7.png
+2RGU_C8.png
+2RGU_C9.png
+2RGU_reference_ligand.png
+```
+
+## File Description
+
+The files `2RGU_C1.png` to `2RGU_C9.png` show the 2D interaction diagrams for the selected docked compounds C1 to C9.
+
+The file `2RGU_reference_ligand.png` shows the 2D interaction diagram for the reference ligand from the 2RGU DPP-4 crystal structure.
+
+## Purpose
+
+These figures summarize the key predicted interactions between each ligand and residues in the DPP-4 binding pocket. They were used to support the qualitative interpretation of docking results and structure–activity relationships.
+
+## Interaction Types
+
+The diagrams may include interactions such as:
 
 ```text
 Hydrogen bonds
@@ -21,12 +42,6 @@ Salt bridges or electrostatic contacts
 Nearby binding-site residues
 ```
 
-## Use in the Project
-
-The 2D interaction diagrams were used as supporting visual evidence for the docking analysis. They help identify whether selected compounds interact with residues associated with the DPP-4 inhibitor-binding pocket.
-
-These interaction figures are intended for qualitative interpretation only. Docking scores and 2D interaction patterns were not used as the primary validation method for QSAR model performance.
-
 ## Notes
 
-The molecular docking analysis was performed to provide structural interpretation of selected QSAR compounds. Because docking is sensitive to ligand preparation, receptor preparation, grid definition, and scoring-function limitations, these figures should be interpreted as supportive rather than definitive binding evidence.
+These 2D interaction diagrams are intended for qualitative structural interpretation. They should be interpreted as supportive docking evidence rather than definitive experimental binding validation.

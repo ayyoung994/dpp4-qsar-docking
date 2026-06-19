@@ -42,6 +42,13 @@ dpp4-qsar-docking/
     └── scripts/
 ```
 
+
+
+<img src="dpp4-qsar-docking/assets/Overall_workflow_ver2.png" alt="DPP-4 QSAR and molecular docking workflow" width="850">
+
+
+
+
 ## Workflow Summary
 
 ### 1. Data Curation

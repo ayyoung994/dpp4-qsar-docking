@@ -8,6 +8,18 @@ Human DPP-4 inhibitor activity data were collected from the ChEMBL database usin
 
 The project includes data curation, chemical-space analysis, QSAR regression modeling, Y-randomization validation, docking-candidate selection, ligand preparation, receptor preparation, and molecular docking analysis using the human DPP-4 crystal structure 2RGU.
 
+
+## Project Workflow
+
+<p align="center">
+  <img src="assets/Overall_workflow_ver2.png" alt="DPP-4 QSAR and molecular docking workflow" width="850">
+</p>
+
+<p align="center">
+  <em>Overview of the computational workflow used for DPP-4 inhibitor data curation, chemical-space analysis, QSAR regression modeling, Y-randomization validation, docking-candidate selection, and molecular docking interpretation.</em>
+</p>
+
+
 ## Repository Structure
 
 ```text
@@ -41,12 +53,6 @@ dpp4-qsar-docking/
     ├── receptor/
     └── scripts/
 ```
-
-
-
-<img src="dpp4-qsar-docking/assets/Overall_workflow_ver2.png" alt="DPP-4 QSAR and molecular docking workflow" width="850">
-
-
 
 
 ## Workflow Summary

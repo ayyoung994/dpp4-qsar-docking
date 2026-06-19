@@ -85,12 +85,6 @@ Independent test-set metrics
 Best hyperparameters
 ```
 
-```text
-DPP4_QSAR_final_model.joblib
-```
-
-Saved final QSAR regression model object.
-
 ## Training-Set Cross-Validated Predictions
 
 ```text
